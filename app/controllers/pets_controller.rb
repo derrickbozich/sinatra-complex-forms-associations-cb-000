@@ -35,6 +35,7 @@ class PetsController < ApplicationController
     @pet.name = params[:pet][:name]
     if params[:owner].empty?
       @pet.owner = Owner.find_by_id(params[:pet][:owner][:name].to_i)
+      @pet.save
     else
       @pet.owner = Owner.create(name: params[:owner][:name])
     end
